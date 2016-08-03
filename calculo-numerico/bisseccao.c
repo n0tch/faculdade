@@ -1,46 +1,68 @@
 #include<stdio.h>
 #include<math.h>
-//para a funcao x^2-3 no intervalo [1,2]
-float a,b, funcA, funcB, xk;
+
+//raiz da funcao (x^2)-3 no intervalo [1;2] com erro relativo <= 0,01
+
+float a, b, x[2], erro;
+float funcA, funcB, funcX;
+int flg = 0;
 
 float f(float x){
-	return pow(x,2) - 3;
+	return(pow(x,2)-3);
 }
 
 void main(){
+
 	int i=0;
+	a = 1;//limite inferior
+	b = 2;//limite superior
 
-	a = 1;
-	b = 2;
+	printf("k\t");
+	printf("ak\t");
+	printf("f(ak)\t");
+	printf("bk\t");
+	printf("f(bk)\t");
+	printf("xk\t");
+	printf("f(xk)\t");
+	printf("E\n");
 
-	printf("k\tak\tf(ak)\tbk\tf(bk)\txk\tf(xk)\tE\t\n");
 	do{
 		printf("%d\t",i);
-		printf("%.3f\t",a);
-		funcA = f(a);
-		printf("%.3f\t",funcA);
-		printf("%.3f\t",b);
-		funcB = f(b);
-		printf("%.3f\t",funcB);
+		printf("%.3f\t", a);
+		printf("%.3f\t", f(a));
 
-		xk = (a+b)/2;
-		printf("%.3f\t",xk);
+		printf("%.3f\t", b);
+		printf("%.3f\t", f(b));
 
-		printf("%.3f\t",f(xk));
+		x[i] = (a+b)/2;
 
-		if(f(a)*f(xk) > 0){
-			a = xk;
+		printf("%.3f\t", x[i]);
+		printf("%.3f\t", f(x[i]));
+
+		if(i>0){
+			flg = 1;
+			erro = fabs(x[i]-x[i-1])/fabs(x[i]);
+			printf("%.3f", erro);
+			//printf("%.3f", fabs(x[i] - x[i-1]))/fabs(x[i]);
 		}else{
-			b = xk;
+			printf("---");
+		}
+		printf("\n");
+
+		if(f(a)*f(x[i]) > 0){
+			a = x[i];
+		}else{
+			b = x[i];
 		}
 
-		if(i!=0){
-			printf("%f", fabs( (2) ));
-		}
 		i++;
 
-		printf("\n");
-		if(i==5)
-			break;
+		if(flg == 1){
+			if(erro <= 0.01){
+				break;
+			}
+		}
+
 	}while(1);
+
 }
