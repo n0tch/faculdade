@@ -8,14 +8,14 @@ float funcA, funcB, funcX;
 int flg = 0;
 
 float f(float x){
-	return(pow(x,2)-3);
+	return(pow(x,3)-10);
 }
 
 void main(){
 
 	int i=0;
-	a = 1;//limite inferior
-	b = 2;//limite superior
+	a = 2;//limite inferior
+	b = 3;//limite superior
 
 	printf("k\t");
 	printf("ak\t");
@@ -58,7 +58,7 @@ void main(){
 		i++;
 
 		if(flg == 1){
-			if(erro <= 0.01){
+			if(erro <= 0.001){
 				break;
 			}
 		}
