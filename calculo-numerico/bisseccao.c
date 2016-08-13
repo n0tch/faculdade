@@ -3,15 +3,16 @@
 
 //raiz da funcao (x^2)-3 no intervalo [1;2] com erro relativo <= 0,01
 
-float a, b, x[2], erro;
-float funcA, funcB, funcX;
-int flg = 0;
-
 float f(float x){
 	return(pow(x,3)-10);
 }
 
 void main(){
+
+	float a, b, erro;
+	float xAnterior, xAtual;
+	float funcA, funcB, funcX;
+	int flg = 1;
 
 	int i=0;
 	a = 2;//limite inferior
@@ -34,35 +35,30 @@ void main(){
 		printf("%.3f\t", b);
 		printf("%.3f\t", f(b));
 
-		x[i] = (a+b)/2;
+		xAtual = (a+b)/2;
 
-		printf("%.3f\t", x[i]);
-		printf("%.3f\t", f(x[i]));
+		printf("%.3f\t", xAtual);
+		printf("%.3f\t", f(xAtual));
 
 		if(i>0){
-			flg = 1;
-			erro = fabs(x[i]-x[i-1])/fabs(x[i]);
+			erro = fabs(xAtual-xAnterior)/fabs(xAtual);
 			printf("%.3f", erro);
-			//printf("%.3f", fabs(x[i] - x[i-1]))/fabs(x[i]);
+			if(erro <= pow(10,-3)){
+				flg = 0;
+			}
 		}else{
 			printf("---");
 		}
 		printf("\n");
 
-		if(f(a)*f(x[i]) > 0){
-			a = x[i];
+		if(f(a)*f(xAtual) > 0){
+			a = xAtual;
 		}else{
-			b = x[i];
+			b = xAtual;
 		}
 
+		xAnterior = xAtual;
 		i++;
-
-		if(flg == 1){
-			if(erro <= 0.001){
-				break;
-			}
-		}
-
-	}while(1);
+	}while(flg == 1);
 
 }
