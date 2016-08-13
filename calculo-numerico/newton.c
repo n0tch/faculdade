@@ -40,7 +40,7 @@ void main(){
 			xAnt = xAtual;
 			xAtual = xk;
 
-			erro = fabs((fabs(xAtual) - fabs(xAnt))/fabs(xAtual));
+			erro = fabs((xAtual - xAnt)/xAtual);
 			printf("%d\t%.8f\t%.8f\t%.8f\t%.8f\n",k,xk, f(xk),fl(xk),erro);
 
 			if(erro <= pow(10,-7))
