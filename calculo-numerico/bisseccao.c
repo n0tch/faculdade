@@ -18,6 +18,8 @@ void main(){
 	a = 2;//limite inferior
 	b = 3;//limite superior
 
+	printf("\nFuncao: x^3-10\n\n");
+
 	printf("k\t");
 	printf("ak\t");
 	printf("f(ak)\t");
@@ -27,7 +29,7 @@ void main(){
 	printf("f(xk)\t");
 	printf("E\n");
 
-	do{
+	while(flg == 1){
 		printf("%d\t",i);
 		printf("%.3f\t", a);
 		printf("%.3f\t", f(a));
@@ -59,6 +61,6 @@ void main(){
 
 		xAnterior = xAtual;
 		i++;
-	}while(flg == 1);
+	}
 
 }

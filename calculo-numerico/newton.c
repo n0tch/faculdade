@@ -29,11 +29,12 @@ void main(){
 	float xAnt, xAtual, erro;
 	float xk= valorInicial(1,2);
 
-	printf("x0: %f\n", xk);
+	printf("\nFuncao: 2x^3+ln(x)-5\n\n");
+	printf("k\txk\t\tf(xk)\t\tf'(xk)\t\tE\n");
 
 	while(flg == 1){
 		if(k==0){
-			printf("%d\t%.8f\t%.8f\t%.8f\n",k,xk, f(xk),fl(xk));
+			printf("%d\t%.8f\t%.8f\t%.8f\t----\n",k,xk, f(xk),fl(xk));
 			xAnt = xk;
 			xAtual = xk;
 		}else{
