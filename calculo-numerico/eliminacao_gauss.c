@@ -21,6 +21,8 @@ void e_matriz(float mat[lin][col],  int linha);
 void s_r_matriz(float mat[lin][col]);
 //contar linhas do txt
 void contar_linhas();
+//imprime as respostas do sistema
+void p_resposta(float resp[lin]);
 
 int main(){
 
@@ -39,10 +41,10 @@ int main(){
 		e_matriz(matriz, i);
 	}
 
-	printf("Matriz Escalonada: \n");
+	printf("\nMatriz Escalonada: \n");
 	i_matriz(matriz);
 	//printf("LOL:\n");
-	//s_r_matriz(matriz);
+	s_r_matriz(matriz);
 	return 0;
 }
 
@@ -127,10 +129,17 @@ void e_matriz(float mat[lin][col],  int linha){
 void s_r_matriz(float mat[lin][col]){
 
 	float resp[lin];
+
+	//inicializo o vetor das respostas com 1 em todas as posicoes
+	for(int i=0;i<lin;i++){
+		resp[i] = 1;
+	}
+
 	//vetor para guardar as respostas
 	float aux=0;
 	int i,j;
 
+	printf("\n");
 	for(i=lin-1;i>=0;i--){
 		for(j=col-1;j>=0;j--){
 			if(j==(col-1)){
@@ -141,14 +150,27 @@ void s_r_matriz(float mat[lin][col]){
 			}else if(i!=j){
 				//somo o inverso de todos os numeros
 				//com a excessao do pivo
-				aux += (-1*mat[i][j]);
+				aux += (-1*mat[i][j]) * (resp[j]);
 			}
 		}
 		//divido o acumulador pelo valor do pivo
 		aux /= mat[i][i];
-		printf(">>> %.2f\n", aux);
-		resp[j] = aux;
-		printf("\n");
+		//armazeno o resultado no vetor de respostas
+		resp[i] = aux;
+		//zero o acumulador
+		aux = 0;
+	}
+
+	p_resposta(resp);
+}
+
+void p_resposta(float resp[lin]){
+
+	int i=0;
+
+	printf("Respostas\n");
+	for(i=0;i<lin;i++){
+		printf("x[%d] = %.2f\n", i+1,resp[i]);
 	}
 }
 
