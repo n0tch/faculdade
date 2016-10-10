@@ -36,14 +36,14 @@ int main(){
 	*/
 	contar_linhas();
 	float matriz[lin][col];
-//	float mult;
+    int i;
 
 	p_matriz(matriz);
 	printf("Matriz original: \n");
 	i_matriz(matriz);
 
-	//for para escalonar a matriz	
-	for(int i=0;i<lin;i++){
+	//for para escalonar a matriz
+	for(i=0;i<lin;i++){
 		e_matriz(matriz, i);
 	}
 
@@ -58,8 +58,9 @@ int main(){
 //imprime matriz
 void i_matriz(float mat[lin][col]){
 
-	for(int i=0;i<lin;i++){
-		for(int j=0; j<col;j++){
+    int i,j;
+	for(i=0;i<lin;i++){
+		for(j=0; j<col;j++){
 			printf("%.2f ", mat[i][j]);
 		}
 		printf("\n");
@@ -71,9 +72,10 @@ void p_matriz(float mat[lin][col]){
 
 	FILE *arq;
 	arq = fopen("matriz.txt", "r");
+    int i,j;
 
-	for(int i=0;i<lin;i++){
-		for(int j=0; j<col;j++){
+	for(i=0;i<lin;i++){
+		for(j=0; j<col;j++){
 			fscanf(arq, "%f", &mat[i][j]);
 		}
 	}
@@ -119,13 +121,13 @@ void e_matriz(float mat[lin][col],  int linha){
 
 	float vet[col];
 	float mult;
-
+    int i,j;
 	//i = linha+1 pois nao vou fazer o escalonamento na linha do pivo
 	//e sim nas linhas +1 dele
-	for(int i=linha+1;i<lin;i++){
+	for(i=linha+1;i<lin;i++){
 		//armazeno o multiplicador da linha em mult
 		mult = m_matriz(mat,linha, i);
-		for(int j=0;j<col;j++){
+		for(j=0;j<col;j++){
 			//o vet recebe o (mult*-1) * (a linha do pivo)
 			vet[j] = (-1*mult)*mat[linha][j];
 			//somo linha de destino com o vet
@@ -139,20 +141,20 @@ void s_r_matriz(float mat[lin][col]){
 
 	//vetor para guardar as respostas
 	float resp[lin];
+	int i,j;
 
 	/*
 	inicializo o vetor das respostas com 1 em todas as posicoes
-	pois o for abaixo multiplica cada posicao da matriz pela mesma 
-	posicao do vetor respostas, caso a posicao seja 1 o valor nao 
+	pois o for abaixo multiplica cada posicao da matriz pela mesma
+	posicao do vetor respostas, caso a posicao seja 1 o valor nao
 	sera alterado
 	*/
-	for(int i=0;i<lin;i++){
+	for(i=0;i<lin;i++){
 		resp[i] = 1;
 	}
 
 	//aux garda a soma dos elementos da linha i da matriz
 	float aux=0;
-	int i,j;
 
 	//inicializo o for de baixo para cima
 	for(i=lin-1;i>=0;i--){
@@ -204,18 +206,28 @@ void contar_linhas(){
 	//feof retorna true quando o arquivo chega ao final
 		if(fgetc(arq) == '\n'){
 		//quando encontro um \n significa que vou para uma nova linha do txt
-			linhas++;
+			++linhas;
 		}
 	}
 
 	//fecho o arquivo
 	fclose(arq);
-
 	/*
 	altero o valor das variaveis globais
 	e por consequencia altero o tamanho das matrizes do programa
 	de acordo com o tamanho da matriz lida no txt
 	*/
-	lin = linhas;
-	col = linhas + 1;
+
+	lin = linhas + 1;
+	col = lin + 1;
+
+	/*
+	--------- para rodar  no linux ------------
+	1 - descomente as 2 linhas abaixo
+	2 - comente as 2 linhas anteriores a este comentario
+	Obs: nao sei pq isso acontece...
+	*/
+
+    //lin = linhas;
+	//col = linhas + 1;
 }
