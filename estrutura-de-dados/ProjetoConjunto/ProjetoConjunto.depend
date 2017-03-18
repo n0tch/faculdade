@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1489871890 source:/home/gustavo/Documentos/faculdade/3 sem/estrutura/ProjetoConjunto/BibConjunto.c
+	<stdio.h>
+	<stdlib.h>
+	"BibConjunto.h"
+
+1489871737 /home/gustavo/Documentos/faculdade/3 sem/estrutura/ProjetoConjunto/BibConjunto.h
+
+1489871864 source:/home/gustavo/Documentos/faculdade/3 sem/estrutura/ProjetoConjunto/main.c
+	<stdio.h>
+	<stdlib.h>
+	"BibConjunto.h"
+
