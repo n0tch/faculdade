@@ -13,9 +13,14 @@ int main()
         printf("Informe o elemento: ");
         scanf("%d", &n);
         inserirElemento(&c1, n);
-        printf("Adicionar outro elemento(1 - s / 0 - n): ");
-        scanf("%d", &i);
-        system("clear");
+        if(c1.tam <20){
+            printf("Adicionar outro elemento(1 - s / 0 - n): ");
+            scanf("%d", &i);
+            system("cls");
+        }else{
+            printf("Tamanho maximo excedido!\n");
+            break;
+        }
     }while(i);
 
     imprimiConjunto(&c1);
@@ -27,9 +32,14 @@ int main()
         printf("Informe o elemento: ");
         scanf("%d", &n);
         inserirElemento(&c2, n);
-        printf("Adicionar outro elemento(1 - s / 0 - n): ");
-        scanf("%d", &i);
-        system("clear");
+        if(c2.tam <20){
+            printf("Adicionar outro elemento(1 - s / 0 - n): ");
+            scanf("%d", &i);
+            system("cls");
+        }else{
+            printf("Tamanho maximo excedido!\n");
+            break;
+        }
     }while(i);
 
     printf("Conjunto 1\n");
@@ -37,7 +47,7 @@ int main()
     printf("Conjunto 2\n");
     imprimiConjunto(&c2);
 
-
+    criaConjunto(&c3);
     uniaoConjunto(&c1,&c2,&c3);
     printf("Unicao entre c1 e c2 sendo armazenada em c3\n");
     imprimiConjunto(&c3);
@@ -54,3 +64,4 @@ int main()
     }
     return 0;
 }
+

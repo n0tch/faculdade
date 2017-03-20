@@ -24,10 +24,9 @@ void imprimiConjunto(TConjunto *conjunto){
 }
 
 void uniaoConjunto(TConjunto *c1, TConjunto *c2, TConjunto *c3){
-    //if((c1->tam + c2->tam) > 20){
-    //    printf("Impossivel criar unicao entre conjuntos!\nTamanho maximo excedido!\n");
-    //}else{
-        printf(">>>>>%d\n", (c1->tam + c2->tam) );
+    if((c1->tam + c2->tam) > 20){
+        printf("Impossivel criar unicao entre conjuntos!\nTamanho maximo excedido!\n");
+    }else{
         int i;
         for(i=0;i<(c1->tam);i++){
             //verifico se o elemento de c1 ja esta em c3
@@ -44,7 +43,7 @@ void uniaoConjunto(TConjunto *c1, TConjunto *c2, TConjunto *c3){
                 inserirElemento(c3, c2->conj[i]);
             }
         }
-    //}
+    }
 }
 
 void intersecaoConjunto(TConjunto *c1, TConjunto *c2, TConjunto *c3){
