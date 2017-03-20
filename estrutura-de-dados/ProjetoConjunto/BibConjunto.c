@@ -24,22 +24,27 @@ void imprimiConjunto(TConjunto *conjunto){
 }
 
 void uniaoConjunto(TConjunto *c1, TConjunto *c2, TConjunto *c3){
-    int i;
-    for(i=0;i<(c1->tam);i++){
-        //verifico se o elemento de c1 ja esta em c3
-        //caso esteja nao o armazeno em c3, pois nao quero elementos repetidos na uniao
-        if(elementoRepetido(c3, c3->tam, c1->conj[i])){
-            inserirElemento(c3, c1->conj[i]);
+    //if((c1->tam + c2->tam) > 20){
+    //    printf("Impossivel criar unicao entre conjuntos!\nTamanho maximo excedido!\n");
+    //}else{
+        printf(">>>>>%d\n", (c1->tam + c2->tam) );
+        int i;
+        for(i=0;i<(c1->tam);i++){
+            //verifico se o elemento de c1 ja esta em c3
+            //caso esteja nao o armazeno em c3, pois nao quero elementos repetidos na uniao
+            if(elementoRepetido(c3, c3->tam, c1->conj[i])){
+                inserirElemento(c3, c1->conj[i]);
+            }
         }
-    }
 
-    for(i=0;i<(c2->tam);i++){
-        //verifico se o elemento de c1 ja esta em c2
-        //caso esteja nao o armazeno em c2, pois nao quero elementos repetidos na uniao
-        if(elementoRepetido(c3, c3->tam, c2->conj[i])){
-            inserirElemento(c3, c2->conj[i]);
+        for(i=0;i<(c2->tam);i++){
+            //verifico se o elemento de c1 ja esta em c2
+            //caso esteja nao o armazeno em c2, pois nao quero elementos repetidos na uniao
+            if(elementoRepetido(c3, c3->tam, c2->conj[i])){
+                inserirElemento(c3, c2->conj[i]);
+            }
         }
-    }
+    //}
 }
 
 void intersecaoConjunto(TConjunto *c1, TConjunto *c2, TConjunto *c3){
@@ -49,7 +54,11 @@ void intersecaoConjunto(TConjunto *c1, TConjunto *c2, TConjunto *c3){
         //if para saber se existe elemento repetido, caso exista esse elemento esta na intersecao
             if(elementoRepetido(c3, c3->tam, c1->conj[i])){
             //if para saber se o elemento ja existe no conjunto destino
-                inserirElemento(c3, c1->conj[i]);
+                if(c3->tam <20){
+                    inserirElemento(c3, c1->conj[i]);
+                }else{
+                    printf("|Interseção| -> Tamanho maximo excedido!\n");
+                }
             }
         }
     }
