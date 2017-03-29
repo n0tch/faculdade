@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1490644001 source:/home/gustavo/Documentos/faculdade/3 sem/estrutura/ListaEncadeada/celula.c
+	<stdio.h>
+	<stdlib.h>
+	"bibLista.h"
+
+1490394807 /home/gustavo/Documentos/faculdade/3 sem/estrutura/ListaEncadeada/celula.h
+
+1490644068 source:/home/gustavo/Documentos/faculdade/3 sem/estrutura/ListaEncadeada/main.c
+	<stdio.h>
+	<stdlib.h>
+	"bibLista.h"
+
+1490643145 /home/gustavo/Documentos/faculdade/3 sem/estrutura/ListaEncadeada/bibLista.h
+
+1490644321 source:/home/gustavo/Documentos/faculdade/3 sem/estrutura/ListaEncadeada/menu.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"bibLista.h"
+
