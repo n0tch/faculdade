@@ -18,15 +18,24 @@ void inserir_final(Celula* cel, int info){
     tmp->prox = novo;
 }
 
-void imprimi_lista(Celula* cel){
+void imprimi_lista(Celula* cel, int op){
     Celula *tmp = cel->prox;
     if(lista_vazia(cel)){
         printf("A lista esta vazia!\n");
     }else{
-        while(tmp != NULL){
-            printf("%d", tmp->info);
-            tmp->prox != NULL ? printf("->") : printf(".\n");
-            tmp = tmp->prox;
+        if(op == 1){
+            printf("info\tendereco do prox\n");
+            while(tmp != NULL){
+                printf("%d\t%d\n", tmp->info, &(tmp->prox));
+                tmp = tmp->prox;
+            }
+            system("pause");
+        }else{
+            while(tmp != NULL){
+                printf("%d", tmp->info);
+                tmp->prox != NULL ? printf("->") : printf(".\n");
+                tmp = tmp->prox;
+            }
         }
     }
 }
@@ -35,17 +44,17 @@ int lista_vazia(Celula* cel){
     return (cel->prox == NULL);
 }
 
-int busca_elemento(Celula* cel, int vlr){
+void busca_elemento(Celula* cel, int vlr){
     Celula* tmp = cel->prox;
-    int flg = 0;
+    int vzs = 0;
     while(tmp != NULL){
         if(tmp->info == vlr){
-            flg = 1;
-            break;
+            printf("Elemento %d encontrado na posicao de memoria %d!\n",vlr, &(tmp->info));
         }
         tmp = tmp->prox;
     }
-    return flg;
+
+    system("pause");
 }
 
 void excluir_elemento(Celula* cel, int vlr){
@@ -76,13 +85,15 @@ void exclui_lista(Celula* cel){
         free(atual);
         atual = p;
     }
+    cel->prox = NULL;
 }
 
 void insere_ordenado(Celula* cel, int vlr){
     Celula *ant = NULL, *atual;
-    atual = cel;
+    atual = cel->prox;
 
-    while(atual != NULL && atual->info < vlr){
+    //printf("%d - %d\n", a);
+    while(atual != NULL && ((atual->info) < vlr) ){
         ant = atual;
         atual = atual->prox;
     }
@@ -97,5 +108,4 @@ void insere_ordenado(Celula* cel, int vlr){
         ant->prox = novo;
         novo->prox = atual;
     }
-
 }

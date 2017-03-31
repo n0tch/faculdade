@@ -13,12 +13,11 @@ void menu(Celula* cel, int op){
             insere_ordenado(cel, entrar_dados());
             break;
         case 3:
-            imprimi_lista(cel);
-            getchar();
+            imprimi_lista(cel,1);
             break;
         case 4:
             lista_vazia(cel) ? printf("A lista esta vazia!\n") : printf("A lista nao esta vazia!\n");
-            getchar();
+            system("pause");
             break;
         case 5:
             busca_elemento(cel, entrar_dados());
@@ -30,7 +29,7 @@ void menu(Celula* cel, int op){
             exclui_lista(cel);
             break;
         case 8:
-            //exclui_lista(cel);
+            exclui_lista(cel);
             break;
     }
 }
