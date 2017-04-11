@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1490917154 source:/home/gustavo/Documentos/faculdade/3 sem/estrutura/lista2/Questao02/funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	"cabecalho.h"
+
+1490917145 /home/gustavo/Documentos/faculdade/3 sem/estrutura/lista2/Questao02/cabecalho.h
+
+1490917174 source:/home/gustavo/Documentos/faculdade/3 sem/estrutura/lista2/Questao02/main.c
+	<stdio.h>
+	<stdlib.h>
+	"cabecalho.h"
+

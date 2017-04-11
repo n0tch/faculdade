@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1491949995 source:/home/gustavo/Documentos/faculdade/3 sem/estrutura/lista2/Questao08/func.c
+	<stdio.h>
+	<stdlib.h>
+	"bib.h"
+
+1491949708 source:/home/gustavo/Documentos/faculdade/3 sem/estrutura/lista2/Questao08/main.c
+	<stdio.h>
+	<stdlib.h>
+	"bib.h"
+
+1491949643 /home/gustavo/Documentos/faculdade/3 sem/estrutura/lista2/Questao08/bib.h
+
