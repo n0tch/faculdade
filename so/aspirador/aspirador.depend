@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1502813910 source:/home/gustavo/Documentos/faculdade/4 sem/sistemas operacionais/aspirador/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<unistd.h>
+
