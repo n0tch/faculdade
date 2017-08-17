@@ -1,4 +1,4 @@
-#ifdef OS_WINDOWS
+#ifdef _WIN32
    #define LIMPAR "cls"
 #else
    #define LIMPAR "clear"
@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
+#include <windows.h>
 
 #define L 6
 #define C 6
@@ -19,7 +20,7 @@ void status(int bateria, int limpo);
 int main()
 {
     srand(time(NULL));
-
+    int i,j;
     int comodo[L][C] = {{1,1,1,1,1,1},
                     {1,0,0,0,0,1},
                     {1,0,0,0,0,1},
@@ -32,8 +33,8 @@ int main()
     int sujeira[2][2] = {{gerar_aleatorio('L'),gerar_aleatorio('C')}, {gerar_aleatorio('L'),gerar_aleatorio('C')}};
     int limpo=0;
 
-    for(int i=1;i<L-1;i++){
-        for(int j=1;j<C-1;j++){
+    for(i=1;i<L-1;i++){
+        for(j=1;j<C-1;j++){
             carrinho[0] = i;
             carrinho[1] = j;
             imprimir_comodo(comodo, sujeira, carrinho);
@@ -41,7 +42,7 @@ int main()
             if(sujeira[0][0] == carrinho[0] && sujeira[0][1] == carrinho[1]){
                 printf("SUJEIRA ENCONTRADA!\n");
                 printf("Limpando...\n");
-                sleep(2);
+                Sleep(2000);
                 sujeira[0][0] = gerar_aleatorio('L');
                 sujeira[0][1] = gerar_aleatorio('C');
 
@@ -51,7 +52,7 @@ int main()
 
             printf("bateria: %d passos restantes.\n", bateria);
             bateria--;
-            sleep(1);
+            Sleep(1000);
             system(LIMPAR);
         }
     }
@@ -72,9 +73,9 @@ int gerar_aleatorio(char lugar){
 
 void imprimir_comodo(int mat[L][C], int sujeira[2][2], int carrinho[2]){
 
-
-    for(int i=0;i<L;i++){
-        for(int j=0;j<C;j++){
+    int i,j;
+    for(i=0;i<L;i++){
+        for(j=0;j<C;j++){
             if(i == carrinho[0] && j == carrinho[1]){
                 printf("%c ", 178);
             }else if( (i == sujeira[0][0] && j == sujeira[0][1]) ){
